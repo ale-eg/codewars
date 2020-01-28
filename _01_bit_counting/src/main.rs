@@ -1,21 +1,12 @@
 //https://www.codewars.com/kata/526571aae218b8ee490006f4
-fn count_bits(n: i64) -> u32 {
-    // code here
-    let mut m = n;
-    let mut t = 0;
-    let mut over:u32 = 0;
-    loop{
-        t = m / 2;
-        if (m - t*2 ) == 1{
-            over += 1;
-        }
-        m = t;
-        if t < 1{
-            break
-        }
+#![allow(unused_parens)]
+fn count_bits(mut n: i64) -> u32 {
+    let mut res: u32 = 0;
+    while (n > 0){
+        res = res + 1;
+        n &= n - 1;
     }
-    println!("over:{}", over);
-    return over
+    return res;
 }
 
 fn returns_expected() {
