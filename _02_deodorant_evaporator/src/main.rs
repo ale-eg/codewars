@@ -1,11 +1,5 @@
-fn evaporator(mut content: f64, evap_per_day: i32, threshold: i32) -> i32 {
-    let mut res = 0;
-    let prg = content * threshold as f64 / 100.0;
-    while content >= prg {
-        content = content - (content * evap_per_day as f64 / 100.0);
-        res = res + 1;
-    }
-    return res;
+fn evaporator(_content: f64, evap_per_day: i32, threshold: i32) -> i32 {
+    (f64::from(threshold)/100.0).log(1.0 - f64::from(evap_per_day)/100.0).ceil() as i32
 }
 
 #[cfg(test)]
